@@ -1,0 +1,3 @@
+[submodule "terrain_segmenter/lib_omniunet"]
+	path = terrain_segmenter/lib_omniunet
+	url = https://github.com/spaceuma/OmniUnet
