@@ -22,7 +22,20 @@ If this work was helpful for your research, please consider citing the following
 @article{}
 ```
 
-# Docker configuration <a name="dockerconf"></a>
+# Table of contents
+
+
+1. [System information](#sys_info)
+2. [Installing Docke](#docker_install)
+3. [Running the code](#run_code)
+4. [Activating the cameras in an Nvidia Jetson Orin Nano](#camera_activation)
+5. [Possible bugs](#possible_bugs)
+
+
+#  System information <a name="sys_info"></a>
+
+
+# Installing Docker <a name="docker_install"></a>
 
 An Ubuntu host system is needed to run the files located at the repo, as we use a Nvidia GPU to train the network. First of all, we must install the docker core:
 
@@ -56,13 +69,23 @@ $ sudo ubuntu-drivers autoinstall
 $ sudo apt-get install -y nvidia-docker2 nvidia-container-runtime
 ```
 
-After that, we must build the configured docker container for this project:
+# Running the code <a name="run_code"></a>
+
+To clone this github repository with its submodules, execute:
+
+```bash
+$ git submodule update --init --recursive
+```
+
+### Amd architecture
+
+Build the docker container for this project:
 
 ```bash
 $ docker build . -f ./dockerfile/multimodal_navigation_amd.dockerfile -t muldimodal_navigation 
 ```
 
-We run the docker image:
+Run the docker image:
 
 ```bash
 $ xhost +local:docker  ## To let docker use the screen
@@ -78,29 +101,12 @@ $ docker run -e DISPLAY=$DISPLAY -v /your/cloned/repo/location:/opt  \
   /bin/bash
 ```
 
-# Jetson Orin 
-
-## Docker
-
-If docker has problems, execute:
-
-```bash
-$ sudo apt reinstall docker-ce
-$ sudo groupadd docker
-$ sudo gpasswd -a $USER docker
-$ newgrp docker
-```
+### Arm architecture (Jetson Orin Nano)
 
 First, build image:
 
 ```bash
 $ docker build . -f ./dockerfile/multimodal_navigation_arm.dockerfile -t muldimodal_navigation 
-```
-
-To clone the github repository submodules, execute:
-
-```bash
-$ git submodule update --init --recursive
 ```
 
 To execute the image:
@@ -119,13 +125,11 @@ $ docker run -e DISPLAY=$DISPLAY -v /your/cloned/repo/location:/opt  \
   /bin/bash
 ```
 
-## Configuration
+# Activating the cameras in an Nvidia Jetson Orin Nano <a name="camera_activation"></a>
+
 To install the OS in a NVMe SSD of the Jetson, you need to do it through the [Nvidia SDK Manager](https://docs.nvidia.com/sdk-manager/install-with-sdkm-jetson/index.html). [Here](https://forums.developer.nvidia.com/t/how-to-get-into-recovery-mode/250525) is a link to important recovery mode info.
 
-# Important
-Exceute `sudo apt remove uvcdynctrl` to fix bug of /var/log/uvcdynctrl-udev.log totally filling the SSD disk.
-
-## Enabling the realsense camera
+### Realsense camera (Realsense D435i)
 The realsense UVC interface doesn't work, so the realsense source code needs to be recompiled using the RSUSB backend (done in the docker image): 
 
 ```bash
@@ -136,7 +140,7 @@ $ cd librealsense && mkdir build && cd build && \
   make -j4 && make install
 ```
 
-## Enabling the thermal camera
+### Thermal camera (Optris PI 640i)
 First, check if the USB HIDRAW interface is enabled to use the thermal camera, otherwise, a /dev null error will be prompted when trying to access it through the `init()` function of its SDK. Execute:
 
 ```bash
@@ -145,9 +149,7 @@ $ zcat /proc/config.gz | grep 'HIDRAW'
 # If you get
 CONFIG_HIDRAW=n
 ```
-You need to recompile the kernel to activate it.
-
-For the Nvidia Jetson Orin, the OS version was Jetpack 6.0 Developer Preview (DP), or Jetson Linux 36.2. To recompile the kernel, first download the Driver Package (BSP) Sources from [here](https://developer.nvidia.com/embedded/jetson-linux-r362). The download file would be `public_sources.tbz2`, unzip it, and uncompress the kernel file `/Linux_for_Tegra/source/kernel_src.tbz2`. Inside the folder `kernel_src`, create a directory named `kernel_out`. Modify the config file `source/kernel_src/kernel/kernel-jammy-src/arch/arm64/configs/defconfig` to add the following lines at the end:
+The kernel must be recompiled for the changes to be applied. For the Nvidia Jetson Orin, the OS version was Jetpack 6.0 Developer Preview (DP), or Jetson Linux 36.2. To recompile the kernel, first download the Driver Package (BSP) Sources from [here](https://developer.nvidia.com/embedded/jetson-linux-r362). The download file would be `public_sources.tbz2`, unzip it, and uncompress the kernel file `/Linux_for_Tegra/source/kernel_src.tbz2`. Inside the folder `kernel_src`, create a directory named `kernel_out`. Modify the config file `source/kernel_src/kernel/kernel-jammy-src/arch/arm64/configs/defconfig` to add the following lines at the end:
 
 ```bash
 CONFIG_HIDRAW=y
@@ -161,7 +163,7 @@ Then, execute the following inside the `kernel_src` directory:
 ```
 
 Finally, do the following: 
-- Copy newly built kernel omage from `kernel_out/kernel/kernel-jammy-src/arch/arm64/Image` to `/boot/Image`.
+- Copy newly built kernel image from `kernel_out/kernel/kernel-jammy-src/arch/arm64/Image` to `/boot/Image`.
 - Copy everything from `kernel_out/arch/arm64/boot/dts/nvidia/` to `/boot/dtb/`.
 - Reboot.
 
@@ -171,4 +173,17 @@ $ zcat /proc/config.gz | grep 'HIDRAW'
 
 # You should get
 CONFIG_HIDRAW=y
+```
+
+# Possible bugs <a name="possible_bugs"></a>
+
+Execute `sudo apt remove uvcdynctrl` to fix bug of /var/log/uvcdynctrl-udev.log totally filling the SSD disk.
+
+If docker has problems to start, execute:
+
+```bash
+$ sudo apt reinstall docker-ce
+$ sudo groupadd docker
+$ sudo gpasswd -a $USER docker
+$ newgrp docker
 ```
