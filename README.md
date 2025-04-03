@@ -9,7 +9,7 @@
 
 ### Information
 
-Code associated to the article: **"Multimodal Perception for Planetary Rovers Using Color, Depth, and Thermal Images".** A video of the performed laboratory test can be found at: 
+Code associated to the article: **"Multimodal Perception for Planetary Rovers Using Color, Depth, and Thermal Images".** This code has the 🔗 [OmniUnet Repository](https://github.com/spaceuma/OmniUnet/) as a submodule. A video of the performed laboratory test can be found at: 
 
 <div align="center">
 <img src="docs/preview_video.gif" alt="Preview gif of the field tests video" width="750"/>
