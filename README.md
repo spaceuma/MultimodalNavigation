@@ -9,11 +9,11 @@
 
 ### Information
 
-Code associated to the article: **"Multimodal Perception for Planetary Rovers Using Color, Depth, and Thermal Images".**
-A video of the performed laboratory test can be found at: 
+Code associated to the article: **"Multimodal Perception for Planetary Rovers Using Color, Depth, and Thermal Images".** A video of the performed laboratory test can be found at: 
 
-![Preview gif of the field tests video](docs/preview_video.gif)
-
+<div align="center">
+<img src="docs/preview_video.gif" alt="Preview gif of the field tests video" width="750"/>
+</div>
 
 ### Citation
 
@@ -33,7 +33,11 @@ If this work was helpful for your research, please consider citing the following
 
 
 #  System information <a name="sys_info"></a>
+This repository contains the code for a multimodal navigation system built on **ROS 2 Humble**, optimized for real-time performance on embedded platforms like the **NVIDIA Jetson Orin Nano**. The system fuses data from color and stereo images obtained from an **Intel RealSense D435i** and thermal imagery from an **Optris PI640i** thermal camera to enhance perception and navigation capabilities in challenging environments. While this implementation is tailored for these sensors, the architecture is modular and can be easily ported to other sensor configurations. A diagram of the system is provided below:
 
+<div align="center">
+<img src="docs/system_diagram.png" alt="System diagram" width="600"/>
+</div>
 
 # Installing Docker <a name="docker_install"></a>
 
