@@ -1,0 +1,4 @@
+### This is **NOT** a regular ROS 2 parameter file. It is parsed inside the node.
+config_output_imgs_publish_hz_rate: 1.0 # FPS
+config_output_topic_RGB:            "/realsense_RGB"
+config_output_topic_Depth:          "/realsense_Depth"

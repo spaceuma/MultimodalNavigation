@@ -1,0 +1,8 @@
+### This is **NOT** a regular ROS 2 parameter file. It is parsed inside the node.
+
+## thermal camera configuration
+camera_serial: 17010068
+config_output_topic_thermal:   "/thermal_RGB"
+config_output_topic_float:     "/thermal_float"
+publish_rate: 2.0 
+pooling_rate: 15.0 # Equivalent to Realsense internal fps ratio

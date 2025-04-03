@@ -1,0 +1,12 @@
+lc_terrain_segmenter:
+  ros__parameters:
+    debug_mode:            false
+    seg_publish_hz_rate:   5.0
+    input_topic_multi_img: "/aligned_img"
+    output_topic_seg_mask: "/seg_mask"
+    output_topic_rgb_seg_mask:  "/seg_rgb_img"
+    network_weights_file:  "Misty-aardvark-373_epoch40.pth"
+    seg_classes_file:      "BASEPROD.txt"
+    network_max_channels:  5
+    network_n_classes:     8
+    network_depth_mode:    "summed_tokens"

@@ -1,0 +1,4 @@
+### This is **NOT** a regular ROS 2 parameter file. It is parsed inside the node.
+debug_mode:             false
+input_seg_topic:        "/seg_trav_map"
+output_gridmap_topic:   "/grid_map"

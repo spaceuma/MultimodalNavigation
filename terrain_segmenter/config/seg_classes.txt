@@ -1,0 +1,7 @@
+0 Void 0 0 0 0
+1 Arid_soil 255 153 51 10
+2 Dirt 153 76 0 20
+3 Grass 0 153 0 30
+4 Gravel 153 51 255 50
+5 Sky 102 178 255 254
+6 Vegetation 255 0 0 254

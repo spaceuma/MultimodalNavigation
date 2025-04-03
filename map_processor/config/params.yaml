@@ -1,0 +1,13 @@
+lc_map_processor:
+  ros__parameters:
+    debug_mode:                        false
+    input_topic_segmentation:          "/seg_mask"
+    output_map_publish_hz_rate:        1.0
+    output_topic_traversability_map:   "/seg_trav_map"
+    output_topic_navigation:           "/nav2_dem"
+    realsense_img_width:               1280
+    realsense_img_height:              720
+    camera_physical_height:            0.65 # meters
+    camera_physical_inclination:       20.0 # degrees
+    output_map_resolution:             0.1
+    max_map_distance:                  10.0 # meters, according to realsense limitation

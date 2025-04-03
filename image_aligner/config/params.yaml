@@ -1,0 +1,14 @@
+lc_image_aligner:
+  ros__parameters:
+    debug_mode:                           false
+    input_topic_multi_img:                "/multi_img"
+    output_topic_aligned_img:             "/aligned_img"
+    output_aligned_img_publish_hz_rate:   5.0
+    output_aligned_img_height:            720
+    output_aligned_img_width:             1280
+    output_aligned_img_channels:          5
+    realsense_img_width:                  1280
+    realsense_img_height:                 720
+    thermal_img_width:                    640
+    thermal_img_height:                   480
+    camera_physical_height:               0.65 # meters

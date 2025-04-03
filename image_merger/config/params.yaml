@@ -1,0 +1,14 @@
+### This is **NOT** a regular ROS 2 parameter file. It is parsed inside the node.
+debug_mode:                false
+multi_img_publish_hz_rate: 5.0
+input_realsense_RGB:       "/realsense_RGB"
+input_realsense_Depth:     "/realsense_Depth"
+input_thermal_float:       "/thermal_float"
+output_topic_multi_img:    "/multi_img"
+input_rover_pose:          "/estimate_pose"
+input_rover_gps:           "/fix"
+output_multi_img_height:   720
+output_multi_img_width:    1280
+output_multi_img_channels: 5
+input_thermal_img_width:   640
+input_thermal_img_height:  480
