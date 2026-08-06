@@ -1,15 +1,17 @@
 # Multimodal Navigation
 
+[![arxiv preprint](https://img.shields.io/badge/arXiv-2607.16366-b31b1b.svg?logo=arxiv)](https://doi.org/10.48550/arXiv.2607.16366)
+
 *Author:* [R. Castilla Arquillo](https://github.com/raulcastar) [![orcid](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4203-8069)
 
 *Supervisor:* [Carlos J. Pérez del Pulgar](https://github.com/carlibiri) [![orcid](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-5819-8310)
 
-*Contact info:* raulcastar@uni.lu
+*Contact info:* raul.castilla@uni.lu
 
 
 ### Information
 
-Code associated to the article: **"Multimodal Perception for Planetary Rovers Using Color, Depth, and Thermal Images".** This code has the 🔗 [OmniUnet Repository](https://github.com/spaceuma/OmniUnet/) as a submodule. A video of the performed laboratory test can be found at: 
+Code associated with the article: [**"PRISM: Multimodal Terrain Mapping for Rover Navigation in Unstructured Environments".**][arxiv] This code has the 🔗 [OmniUnet Repository](https://github.com/spaceuma/OmniUnet/) as a submodule. A video of the performed laboratory test can be found at: 
 
 <div align="center">
 <img src="docs/preview_video.gif" alt="Preview gif of the field tests video" width="750"/>
@@ -19,14 +21,19 @@ Code associated to the article: **"Multimodal Perception for Planetary Rovers Us
 
 If this work was helpful for your research, please consider citing the following BibTeX entry:
 ```BibTeX
-@article{}
+@article{castilla2026prism,
+  title={PRISM: Multimodal Terrain Mapping for Rover Navigation in Unstructured Environments},
+  author={Castilla-Arquillo, Raul and Perez-del-Pulgar, Carlos and Gerdes, Levin and Garcia-Cerezo, Alfonso and Olivares-Mendez, Miguel A},
+  journal={arXiv preprint arXiv:2607.16366},
+  year={2026}
+}
 ```
 
 # Table of contents
 
 
 1. [System information](#sys_info)
-2. [Installing Docke](#docker_install)
+2. [Installing Docker](#docker_install)
 3. [Running the code](#run_code)
 4. [Activating the cameras in an Nvidia Jetson Orin Nano](#camera_activation)
 5. [Possible bugs](#possible_bugs)
@@ -191,3 +198,5 @@ $ sudo groupadd docker
 $ sudo gpasswd -a $USER docker
 $ newgrp docker
 ```
+
+[arxiv]: https://doi.org/10.48550/arXiv.2508.00580
